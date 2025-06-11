@@ -90,7 +90,7 @@ def render_blocks(pdf_bytes: bytes, blocks: List[SimpleBlock]) -> bytes:
         page.apply_redactions()
         
         # Insert new text
-        for block in page_blocks:
+        for block_index, block in enumerate(page_blocks):
             bbox = parse_bbox_string(block.orig_bbox)
             
             # Get text from all spans
@@ -98,7 +98,10 @@ def render_blocks(pdf_bytes: bytes, blocks: List[SimpleBlock]) -> bytes:
             
             # Insert simplified HTML (just basic text)
             html_content = f'<div style="font-family: Arial; font-size: 12pt;">{text}</div>'
-            page.insert_htmlbox(bbox, html_content)
+            (spare_height, scale) = page.insert_htmlbox(bbox, html_content)
+
+            if block_index == 42:
+                print(spare_height, scale)
     
     # Save to buffer
     output_buffer = io.BytesIO()
