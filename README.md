@@ -15,7 +15,7 @@ This project demonstrates a simple approach to extracting text blocks from a PDF
 
 ## Installation
 
-1. Make sure you have Python 3.8+ and Poetry installed
+1. Make sure you have Python 3.9+ and Poetry installed
 2. Clone this repository
 3. Install dependencies:
 
@@ -23,7 +23,33 @@ This project demonstrates a simple approach to extracting text blocks from a PDF
 poetry install
 ```
 
+4. Activate the Poetry virtual environment:
+
+```bash
+poetry shell
+```
+
 ## Usage
+
+### Option 1: Using Poetry Shell (Recommended)
+
+1. Activate the Poetry virtual environment:
+
+```bash
+poetry shell
+```
+
+2. Place your PDF file as `input.pdf` in the project directory
+
+3. Run the processor:
+
+```bash
+python main.py
+```
+
+4. The processed PDF will be saved as `output.pdf`
+
+### Option 2: Using Poetry Run
 
 1. Place your PDF file as `input.pdf` in the project directory
 2. Run the processor:
